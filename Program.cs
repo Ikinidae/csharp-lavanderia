@@ -18,41 +18,24 @@
 //lavaggio.
 //3 - l’attuale incasso generato dall’utilizzo delle macchine.
 
+Lavanderia lavanderia = new Lavanderia();
+lavanderia.StatoMacchine();
+
 //creaiamo 5 lavatrici
-Lavatrice lavatrice1 = new Lavatrice("Lavatrice 1", true);
-Console.WriteLine("nome lavatrice: " + lavatrice1.Nome);
-Console.WriteLine("stato lavatrice: " + lavatrice1.InFunzione);
-Console.WriteLine("serbatoio detersivo : " + lavatrice1.SerbatoioDetersivo);
-Console.WriteLine("serbatoio ammorbidente : " + lavatrice1.SerbatoioAmmorbidente);
-Console.WriteLine("incasso : " + lavatrice1.Incasso);
+Lavatrice lavatrice1 = new Lavatrice("Lavatrice 1");
+Lavatrice lavatrice2 = new Lavatrice("Lavatrice 2");
+Lavatrice lavatrice3 = new Lavatrice("Lavatrice 3");
 
-Lavatrice lavatrice2 = new Lavatrice("Lavatrice 2", false);
-Console.WriteLine("nome lavatrice: " + lavatrice2.Nome);
-Console.WriteLine("stato lavatrice: " + lavatrice2.InFunzione);
-Console.WriteLine("serbatoio detersivo : " + lavatrice2.SerbatoioDetersivo);
-Console.WriteLine("serbatoio ammorbidente : " + lavatrice2.SerbatoioAmmorbidente);
-Console.WriteLine("incasso : " + lavatrice2.Incasso);
-
-Lavatrice lavatrice3 = new Lavatrice("Lavatrice 3", false);
-Console.WriteLine("nome lavatrice: " + lavatrice3.Nome);
-Console.WriteLine("stato lavatrice: " + lavatrice3.InFunzione);
-Console.WriteLine("serbatoio detersivo : " + lavatrice3.SerbatoioDetersivo);
-Console.WriteLine("serbatoio ammorbidente : " + lavatrice3.SerbatoioAmmorbidente);
-Console.WriteLine("incasso : " + lavatrice3.Incasso);
 
 
 //creiamo i programmi lavatrice
 ProgrammaLavatrice rinfrescante = new ProgrammaLavatrice("Rinfrescante", 2, 20, 20, 5);
 ProgrammaLavatrice rinnovante = new ProgrammaLavatrice("Rinnovante", 3, 40, 40, 10);
 ProgrammaLavatrice sgrassante = new ProgrammaLavatrice("Sgrassante", 4, 60, 60, 15);
-Console.WriteLine(rinfrescante.NomeProgramma + rinfrescante.Costo + rinfrescante.Durata + rinfrescante.Detersivo + rinfrescante.Ammorbidente);
 
 
 //creiamo le asciugatrici
-Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1", false);
-Console.WriteLine("nome asciugatrice: " + asciugatrice1.Nome);
-Console.WriteLine("stato asciugatrice: " + asciugatrice1.InFunzione);
-Console.WriteLine("l'incasso è: " + asciugatrice1.Incasso);
+Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1");
 
 
 //creiamo i programmi asciugatrice
@@ -71,12 +54,12 @@ public class Lavatrice
     public float Incasso { get; }
 
     //costruttore
-    public Lavatrice (string nome, bool inFunzione)
+    public Lavatrice (string nome)
     {
         Nome = nome;
         Random rnd = new Random();
-        //var randomBool = rnd.Next(1) == 0; // 0 = false, 1 = true;
-        InFunzione = inFunzione;
+        var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
+        InFunzione = randomBool;
         SerbatoioDetersivo = rnd.Next(1001);
         SerbatoioAmmorbidente = rnd.Next(501);
         Incasso = rnd.Next(501) * 0.50f;
@@ -113,11 +96,12 @@ public class Asciugatrice
     public float Incasso { get; }
 
     //costruttore
-    public Asciugatrice(string nome, bool inFunzione)
+    public Asciugatrice(string nome)
     {
         Nome = nome;
         Random rnd = new Random();
-        InFunzione = inFunzione;
+        var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
+        InFunzione = randomBool;
         Incasso = rnd.Next(1, 101) * 0.50f;
     }
 }
@@ -136,5 +120,82 @@ public class ProgrammaAsciugatrice
         NomeProgramma = nomeProgramma;
         Costo = costo;
         Durata = durata;
+    }
+}
+
+
+//classe lavanderia
+public class Lavanderia
+{
+    public Lavatrice[] Lavatrici { get; }
+    public Asciugatrice[] Asciugatrici { get; }
+
+    //costruttore
+    public Lavanderia()
+    {
+
+        Lavatrici = new Lavatrice[5];
+
+        Lavatrice lavatrice1 = new Lavatrice("Lavatrice 1");
+        Lavatrice lavatrice2 = new Lavatrice("Lavatrice 2");
+        Lavatrice lavatrice3 = new Lavatrice("Lavatrice 3");
+        Lavatrice lavatrice4 = new Lavatrice("Lavatrice 4");
+        Lavatrice lavatrice5 = new Lavatrice("Lavatrice 5");
+
+        Lavatrici[0] = lavatrice1;
+        Lavatrici[1] = lavatrice2;
+        Lavatrici[2] = lavatrice3;
+        Lavatrici[3] = lavatrice4;
+        Lavatrici[4] = lavatrice5;
+
+        Asciugatrici = new Asciugatrice[5];
+
+        Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1");
+        Asciugatrice asciugatrice2 = new Asciugatrice("Asciugatrice 2");
+        Asciugatrice asciugatrice3 = new Asciugatrice("Asciugatrice 3");
+        Asciugatrice asciugatrice4 = new Asciugatrice("Asciugatrice 4");
+        Asciugatrice asciugatrice5 = new Asciugatrice("Asciugatrice 5");
+
+        Asciugatrici[0] = asciugatrice1;
+        Asciugatrici[1] = asciugatrice2;
+        Asciugatrici[2] = asciugatrice3;
+        Asciugatrici[3] = asciugatrice4;
+        Asciugatrici[4] = asciugatrice5;
+    }
+
+    public void StatoMacchine ()
+    {
+        //per stampare le lavatrici
+        Console.WriteLine("STATO LAVATRICI:");
+        for (int i = 0; i < Lavatrici.Length; i++)
+        {
+            Console.WriteLine ("Nome lavatrice: " + Lavatrici[i].Nome);
+            if (Lavatrici[i].InFunzione)
+            {
+                Console.WriteLine("Stato: in lavaggio");
+            }
+            else
+            {
+                Console.WriteLine("Stato: inattiva");
+            }
+            Console.WriteLine("---------------------------------");
+        }
+        Console.WriteLine("---------------------------------");
+
+        //per stampare le asciugatrici
+        Console.WriteLine("STATO ASCIUGATRICI:");
+        for (int i = 0; i < Asciugatrici.Length; i++)
+        {
+            Console.WriteLine("Nome asciugatrice: " + Asciugatrici[i].Nome);
+            if (Asciugatrici[i].InFunzione)
+            {
+                Console.WriteLine("Stato: in asciugatura");
+            }
+            else
+            {
+                Console.WriteLine("Stato: inattiva");
+            }
+            Console.WriteLine("---------------------------------");
+        }
     }
 }
