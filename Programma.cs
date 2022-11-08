@@ -20,10 +20,23 @@
 
 
 //creo lavanderia che al suo interno crea le macchine
-Lavanderia lavanderia = new Lavanderia();
 
 //stampo lo stato delle macchine
-lavanderia.StatoMacchine();
 
 //interrogo le singole macchine
-lavanderia.InterrogaMacchine();
+//classe programma
+public abstract class Programma
+{
+    //properties
+    public string Nome { get; set; }
+    public int Costo { get; set; }
+    public int Durata { get; set; }
+
+    //costruttore
+    public Programma (string nome, int costo, int durata)
+    {
+        Nome = nome;
+        Costo = costo;
+        Durata = durata;
+    }
+}
