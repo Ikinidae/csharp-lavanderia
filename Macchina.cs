@@ -5,6 +5,7 @@
     public bool InFunzione { get; }
     public float Incasso { get; }
     public string ProgrammaInCorso { get; set; }
+    public int DurataProgrammaInCorso { get; set; }
 
     //costruttore
     public Macchina (string nome)
@@ -13,10 +14,7 @@
         Random rnd = new Random();
         var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
         InFunzione = randomBool;
-        Incasso = rnd.Next(501) * 0.50f;
+        Incasso = 0;
 
     }
-
-    //metodi
-    public abstract string AssegnaProgramma();
 }

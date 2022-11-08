@@ -21,9 +21,12 @@
 
 //creo lavanderia che al suo interno crea le macchine
 Lavanderia lavanderia = new Lavanderia();
+lavanderia.AssegnaProgramma();
 
 //stampo lo stato delle macchine
 lavanderia.StatoMacchine();
 
 //interrogo le singole macchine
-lavanderia.InterrogaMacchine();
+Console.WriteLine("Vuoi interrogare una lavatrice o un'asciugatrice? [lavatrice/asciugatrice]");
+string interrogazione = Console.ReadLine();
+lavanderia.InterrogaMacchine(interrogazione);
