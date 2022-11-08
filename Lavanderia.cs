@@ -94,6 +94,7 @@ public class Lavanderia
         }
     }
 
+
     public void AssegnaProgramma()
     {
         for (int i = 0; i < Lavatrici.Length; i++)
@@ -104,6 +105,10 @@ public class Lavanderia
                 int rndInt = rnd.Next(0, 3);
                 Lavatrici[i].ProgrammaInCorso = Lavatrici[i].ProgrammiLavatrice[rndInt].Nome;
                 Lavatrici[i].DurataProgrammaInCorso = Lavatrici[i].ProgrammiLavatrice[rndInt].Durata;
+                Lavatrici[i].SerbatoioDetersivo = Lavatrici[i].SerbatoioDetersivo - Lavatrici[i].ProgrammiLavatrice[rndInt].Detersivo;
+                Lavatrici[i].SerbatoioAmmorbidente = Lavatrici[i].SerbatoioAmmorbidente - Lavatrici[i].ProgrammiLavatrice[rndInt].Ammorbidente;
+                Lavatrici[i].Incasso = Lavatrici[i].Incasso + Lavatrici[i].ProgrammiLavatrice[rndInt].Costo;
+
             }
         }
 
@@ -115,6 +120,7 @@ public class Lavanderia
                 int rndInt = rnd.Next(0, 2);
                 Asciugatrici[i].ProgrammaInCorso = Asciugatrici[i].ProgrammiAsciugatrice[rndInt].Nome;
                 Asciugatrici[i].DurataProgrammaInCorso = Asciugatrici[i].ProgrammiAsciugatrice[rndInt].Durata;
+                Asciugatrici[i].Incasso = Asciugatrici[i].Incasso + Asciugatrici[i].ProgrammiAsciugatrice[rndInt].Costo;
             }
         }
     }
@@ -191,7 +197,7 @@ public class Lavanderia
         {
             totLavatrici += lavatrice.Incasso;
         }
-        Console.WriteLine("L'attuale incasso delle lavatrici è: " + totLavatrici);
+        Console.WriteLine("L'attuale incasso delle lavatrici è: " + (totLavatrici * 0.50f) );
 
         //totale asciugatrici
         float totAsciugatrici = 0;
@@ -199,10 +205,10 @@ public class Lavanderia
         {
             totAsciugatrici += asciugatrice.Incasso;
         }
-        Console.WriteLine("L'attuale incasso delle asciugatrici è: " + totAsciugatrici);
+        Console.WriteLine("L'attuale incasso delle asciugatrici è: " + (totAsciugatrici * 0.50f));
 
         //totale macchine
-        Console.WriteLine("L'attuale incasso di tutte le macchine è: " + (totAsciugatrici + totLavatrici));
+        Console.WriteLine("L'attuale incasso di tutte le macchine è: " + ((totAsciugatrici + totLavatrici) * 0.50f));
 
     }
 }

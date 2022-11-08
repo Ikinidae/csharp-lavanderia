@@ -2,8 +2,8 @@
 public class Lavatrice : Macchina
 {
     //properties
-    public int SerbatoioDetersivo { get; }
-    public int SerbatoioAmmorbidente { get; }
+    public int SerbatoioDetersivo { get; set; }
+    public int SerbatoioAmmorbidente { get; set; }
     public ProgrammaLavatrice[] ProgrammiLavatrice { get; }
     //public string ProgrammaInCorso { get; set; }
 

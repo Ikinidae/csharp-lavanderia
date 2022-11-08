@@ -1,9 +1,9 @@
 ﻿public abstract class Macchina
 {
     //properties
-    public string Nome { get; }
-    public bool InFunzione { get; }
-    public float Incasso { get; }
+    public string Nome { get; set;  }
+    public bool InFunzione { get; set; }
+    public float Incasso { get; set; }
     public string ProgrammaInCorso { get; set; }
     public int DurataProgrammaInCorso { get; set; }
 
@@ -14,7 +14,7 @@
         Random rnd = new Random();
         var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
         InFunzione = randomBool;
-        Incasso = rnd.Next(50);
+        Incasso = 0;
 
     }
 }
