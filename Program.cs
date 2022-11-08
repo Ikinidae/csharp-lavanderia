@@ -26,6 +26,9 @@ lavanderia.AssegnaProgramma();
 //stampo lo stato delle macchine
 lavanderia.StatoMacchine();
 
+//incasso
+lavanderia.IncassoTotale();
+
 //interrogo le singole macchine
 Console.WriteLine("Vuoi interrogare una lavatrice o un'asciugatrice? [lavatrice/asciugatrice]");
 string interrogazione = Console.ReadLine();

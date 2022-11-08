@@ -14,7 +14,7 @@
         Random rnd = new Random();
         var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
         InFunzione = randomBool;
-        Incasso = 0;
+        Incasso = rnd.Next(50);
 
     }
 }

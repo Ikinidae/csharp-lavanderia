@@ -61,6 +61,7 @@ public class Lavanderia
         for (int i = 0; i < Lavatrici.Length; i++)
         {
             Console.WriteLine ("Nome lavatrice: " + Lavatrici[i].Nome);
+            Console.WriteLine("Incasso lavatrice: " + Lavatrici[i].Incasso);
             if (Lavatrici[i].InFunzione)
             {
                 Console.WriteLine("Stato: in lavaggio");
@@ -79,6 +80,7 @@ public class Lavanderia
         for (int i = 0; i < Asciugatrici.Length; i++)
         {
             Console.WriteLine("Nome asciugatrice: " + Asciugatrici[i].Nome);
+            Console.WriteLine("Incasso asciugatrice: " + Asciugatrici[i].Incasso);
             if (Asciugatrici[i].InFunzione)
             {
                 Console.WriteLine("Stato: in asciugatura");
@@ -181,78 +183,27 @@ public class Lavanderia
     }
 
 
-
-    //public void InterrogaMacchine()
-    //{
-    //    Console.WriteLine("Vuoi interrogare una lavatrice o un'asciugatrice? [lavatrice/asciugatrice]");
-    //    string interrogazione = Console.ReadLine();
-    //    if (interrogazione == "lavatrice")
-    //    {
-    //        Console.WriteLine("Scegli la lavatrice [1,2,3,4,5]");
-    //        int lavatriceScelta = Convert.ToInt32(Console.ReadLine());
-    //        if (lavatriceScelta > 0 && lavatriceScelta < 6)
-    //        {
-    //            Console.WriteLine("nome lavatrice: " + Lavatrici[lavatriceScelta - 1].Nome);
-    //            if (Lavatrici[lavatriceScelta - 1].InFunzione)
-    //            {
-    //                Console.WriteLine("Stato: In lavaggio");
-    //            }
-    //            else
-    //            {
-    //                Console.WriteLine("Stato: inattiva");
-    //            }
-    //            Console.WriteLine("stato serbatoio detersivo: " + Lavatrici[lavatriceScelta - 1].SerbatoioDetersivo);
-    //            Console.WriteLine("stato serbatoio ammorbidente: " + Lavatrici[lavatriceScelta - 1].SerbatoioAmmorbidente);
-    //            Console.WriteLine("programma in funzione: " + Lavatrici[lavatriceScelta - 1].ProgrammaInCorso);
-    //            Console.WriteLine("durata programma: " + Lavatrici[lavatriceScelta - 1].ProgrammaInCorso);
-    //            Console.WriteLine("l'incasso è: " + Lavatrici[lavatriceScelta - 1].Incasso);
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("inserisci un numero valido");
-    //            InterrogaMacchine();
-    //        }
-    //    }
-    //    else if (interrogazione == "asciugatrice")
-    //    {
-    //        Console.WriteLine("Scegli l'asciugatrice [1,2,3,4,5]");
-    //        int asciugatriceScelta = Convert.ToInt32(Console.ReadLine());
-    //        if (asciugatriceScelta > 0 && asciugatriceScelta < 6)
-    //        {
-    //            Console.WriteLine("nome asciugatrice: " + Asciugatrici[asciugatriceScelta - 1].Nome);
-    //            if (Asciugatrici[asciugatriceScelta - 1].InFunzione)
-    //            {
-    //                Console.WriteLine("Stato: In asciugatura");
-    //            }
-    //            else
-    //            {
-    //                Console.WriteLine("Stato: inattiva");
-    //            }
-    //            Console.WriteLine("programma in funzione: " + Asciugatrici[asciugatriceScelta - 1].ProgrammaInCorso);
-    //            Console.WriteLine("l'incasso è: " + Asciugatrici[asciugatriceScelta - 1].Incasso);
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("fai una scelta appropriata");
-    //            InterrogaMacchine();
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Console.WriteLine("fai una scelta appropriata");
-    //        InterrogaMacchine();
-    //    }
-
-    //}
-
     public void IncassoTotale ()
     {
-        Console.WriteLine("L'attuale incasso totale è: ");
-        float tot = 0;
+        //totale lavatrici
+        float totLavatrici = 0;
         foreach (Lavatrice lavatrice in Lavatrici)
         {
-            tot += lavatrice.Incasso;
+            totLavatrici += lavatrice.Incasso;
         }
+        Console.WriteLine("L'attuale incasso delle lavatrici è: " + totLavatrici);
+
+        //totale asciugatrici
+        float totAsciugatrici = 0;
+        foreach (Asciugatrice asciugatrice in Asciugatrici)
+        {
+            totAsciugatrici += asciugatrice.Incasso;
+        }
+        Console.WriteLine("L'attuale incasso delle asciugatrici è: " + totAsciugatrici);
+
+        //totale macchine
+        Console.WriteLine("L'attuale incasso di tutte le macchine è: " + (totAsciugatrici + totLavatrici));
+
     }
 }
 
